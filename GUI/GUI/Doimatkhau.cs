@@ -1,4 +1,5 @@
 ﻿using DAL.Model;
+using OfficeOpenXml.Export.ToDataTable;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -22,14 +23,16 @@ namespace GUI
         {
             InitializeComponent();
             contextDB = new MarketModel();
-            Loadtaikhoan();
+            Loadmatkhau();
         }
-        private void Loadtaikhoan()
+        private void Loadmatkhau()
         {
             var taikhoanList = contextDB.taikhoans.ToList();
             cmb_manv.DataSource = taikhoanList;
             cmb_manv.DisplayMember = "fullname";
             cmb_manv.ValueMember = "manv";
+            txt_matkhaumoi.Clear();
+            txt_reenterpassword.Clear();
         }
         private void bt_doimatkhau_Click(object sender, EventArgs e)
         {
@@ -65,10 +68,13 @@ namespace GUI
             try
             {
                 contextDB.SaveChanges();
-
-
                 MessageBox.Show("Đổi mật khẩu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
+                Loadmatkhau();
+                // Reload the data grid view in Quanlytaikhoan form
+                if (taikhoanForm != null)
+                {
+                    taikhoanForm.LoadTaiKhoan();
+                }
             }
             catch (Exception ex)
             {

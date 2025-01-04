@@ -119,7 +119,6 @@
             this.dgv_nhaphang.RowTemplate.Height = 28;
             this.dgv_nhaphang.Size = new System.Drawing.Size(991, 544);
             this.dgv_nhaphang.TabIndex = 69;
-            this.dgv_nhaphang.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_nhaphang_CellContentClick);
             // 
             // Nhaphang
             // 
@@ -127,6 +126,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1022, 717);
             this.Controls.Add(this.groupBox1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Nhaphang";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Nhaphang";

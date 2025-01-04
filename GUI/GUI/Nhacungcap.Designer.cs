@@ -184,6 +184,7 @@
             // picture_avartar
             // 
             this.picture_avartar.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.picture_avartar.Image = ((System.Drawing.Image)(resources.GetObject("picture_avartar.Image")));
             this.picture_avartar.Location = new System.Drawing.Point(534, 15);
             this.picture_avartar.Name = "picture_avartar";
             this.picture_avartar.Size = new System.Drawing.Size(338, 277);
@@ -413,7 +414,7 @@
             this.bt_excel.ForeColor = System.Drawing.SystemColors.ControlText;
             this.bt_excel.Image = global::GUI.Properties.Resources.Microsoft_Excel_2013_icon;
             this.bt_excel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bt_excel.Location = new System.Drawing.Point(775, 318);
+            this.bt_excel.Location = new System.Drawing.Point(868, 319);
             this.bt_excel.Name = "bt_excel";
             this.bt_excel.Size = new System.Drawing.Size(136, 61);
             this.bt_excel.TabIndex = 125;

@@ -240,5 +240,58 @@ namespace GUI
                 }
             }
         }
+
+        private void bt_excel_Click(object sender, EventArgs e)
+        {
+            if (dgv_nhanvien.Rows.Count == 0)
+            {
+                MessageBox.Show("Không có dữ liệu để xuất!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            using (SaveFileDialog saveFileDialog = new SaveFileDialog())
+            {
+                saveFileDialog.Filter = "Excel files (*.xlsx)|*.xlsx";
+                saveFileDialog.Title = "Lưu file Excel";
+                saveFileDialog.FileName = "Danh sách nhân viên.xlsx";
+
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        var data = new List<object>();
+                        foreach (DataGridViewRow row in dgv_nhanvien.Rows)
+                        {
+                            if (row.IsNewRow) continue;
+                            data.Add(new
+                            {
+                                MaNV = row.Cells[0].Value,
+                                HoTen = row.Cells[1].Value,
+                                SoDienThoai = row.Cells[2].Value,
+                                Email = row.Cells[3].Value,
+                                Avatar = row.Cells[4].Value
+                            });
+                        }
+
+                        var columnMapping = new Dictionary<string, Func<object, object>>
+                        {
+                            { "Mã Nhân Viên", x => x.GetType().GetProperty("MaNV")?.GetValue(x, null) },
+                            { "Họ Tên", x => x.GetType().GetProperty("HoTen")?.GetValue(x, null) },
+                            { "Số Điện Thoại", x => x.GetType().GetProperty("SoDienThoai")?.GetValue(x, null) },
+                            { "Email", x => x.GetType().GetProperty("Email")?.GetValue(x, null) },
+                            { "Avatar", x => x.GetType().GetProperty("Avatar")?.GetValue(x, null) }
+                        };
+
+                        Excel.ExportToExcel(data, saveFileDialog.FileName, "DanhSachNhanVien", columnMapping);
+
+                        MessageBox.Show("Xuất file Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show($"Có lỗi xảy ra khi xuất file Excel: {ex.Message}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
+        }
     }
 }

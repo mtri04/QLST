@@ -332,76 +332,85 @@ namespace GUI
 
         private void bt_xuathoadon_Click(object sender, EventArgs e)
         {
-            string mahd = txt_madh.Text;
-            string manv = cmb_manv.SelectedValue.ToString();
-            string tenkh = txt_tenkh.Text;
-            string sdt = txt_sdt.Text;
-            string diachi = txt_diachi.Text;
-            DateTime ngaymua = datetimepacket_datecreate.Value;
-
-
-            DataTable hoadonData = new DataTable();
-            hoadonData.Columns.Add("MaSP");
-            hoadonData.Columns.Add("TenSP");
-            hoadonData.Columns.Add("SoLuongMua");
-            hoadonData.Columns.Add("Giaban");
-            hoadonData.Columns.Add("Thanhtien");
-
-  
-            foreach (DataGridViewRow row in dgv_donhang.Rows)
+            try
             {
-                if (row.Cells["MaSP"].Value != null && row.Cells["SoLuongMua"].Value != null && row.Cells["Thanhtien"].Value != null)
+                // Lấy giá trị từ các TextBox và ComboBox
+                string mahd = txt_madh.Text;  // Mã hóa đơn
+                string manv = cmb_manv.SelectedValue.ToString();  // Mã nhân viên
+                string tenkh = txt_tenkh.Text;  // Tên khách hàng
+                string sdt = txt_sdt.Text;  // Số điện thoại
+                string diachi = txt_diachi.Text;  // Địa chỉ
+                DateTime ngaymua = datetimepacket_datecreate.Value;  // Ngày mua
+
+                // Tạo DataTable để chứa dữ liệu
+                DataTable hoadonData = new DataTable();
+                hoadonData.Columns.Add("MaSP");
+                hoadonData.Columns.Add("TenSP");
+                hoadonData.Columns.Add("SoLuongMua");
+                hoadonData.Columns.Add("Giaban");
+                hoadonData.Columns.Add("Thanhtien");
+
+                // Lấy danh sách sản phẩm từ DataGridView
+                foreach (DataGridViewRow row in dgv_donhang.Rows)
                 {
-                    DataRow newRow = hoadonData.NewRow();
-                    newRow["MaSP"] = row.Cells["MaSP"].Value.ToString();
-                    newRow["TenSP"] = row.Cells["TenSP"].Value.ToString();
-                    newRow["SoLuongMua"] = row.Cells["Soluongmua"].Value.ToString();
-                    newRow["Giaban"] = row.Cells["Giaban"].Value.ToString();
-                    newRow["Thanhtien"] = row.Cells["Thanhtien"].Value.ToString();
-                    hoadonData.Rows.Add(newRow);
+                    if (row.Cells["MaSP"].Value != null && row.Cells["SoLuongMua"].Value != null && row.Cells["Thanhtien"].Value != null)
+                    {
+                        DataRow newRow = hoadonData.NewRow();
+                        newRow["MaSP"] = row.Cells["MaSP"].Value.ToString();
+                        newRow["TenSP"] = row.Cells["TenSP"].Value.ToString();
+                        newRow["SoLuongMua"] = row.Cells["Soluongmua"].Value.ToString();
+                        newRow["Giaban"] = row.Cells["Giaban"].Value.ToString();
+                        newRow["Thanhtien"] = row.Cells["Thanhtien"].Value.ToString();
+                        hoadonData.Rows.Add(newRow);
+                    }
+                }
+
+                // Kiểm tra nếu không có sản phẩm để xuất hóa đơn
+                if (hoadonData.Rows.Count == 0)
+                {
+                    MessageBox.Show("Đơn hàng chưa có sản phẩm để xuất hóa đơn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                // Tạo đối tượng xuatdonhang và truyền dữ liệu
+                foreach (DataRow row in hoadonData.Rows)
+                {
+                    string maSP = row["MaSP"].ToString();
+                    string tenSP = row["TenSP"].ToString();
+                    int soLuong = Convert.ToInt32(row["SoLuongMua"]);
+                    decimal donGia = Convert.ToDecimal(row["Giaban"]);
+                    decimal thanhTien = Convert.ToDecimal(row["Thanhtien"]);
+
+                    // Chuyển đổi donGia thành int? để truyền vào constructor
+                    int? giaban = (int?)Math.Floor(donGia);  // Làm tròn xuống phần nguyên của decimal thành int?
+
+                    // Truyền tham số vào constructor của xuatdonhang
+                    xuatdonhang phieuxuatForm = new xuatdonhang(
+                        mahd,         // Mã hóa đơn (string)
+                        tenkh,        // Tên khách hàng
+                        sdt,          // Số điện thoại
+                        diachi,       // Địa chỉ
+                        manv,         // Mã nhân viên
+                        ngaymua,      // Ngày mua (DateTime)
+                        giaban,    // Giá bán (int?)
+                        soLuong,      // Số lượng (int?)
+                        maSP,         // Mã sản phẩm (string)
+                        tenSP,        // Tên sản phẩm (string)
+                        thanhTien     // Thành tiền (decimal?)
+                    );
+                    phieuxuatForm.LoadData(hoadonData);
+                    phieuxuatForm.ShowDialog();  // Hiển thị form hóa đơn
                 }
             }
-
-    
-            xuatdonhang phieuxuatForm = new xuatdonhang(mahd, manv, tenkh, sdt, diachi, ngaymua, hoadonData);
-            phieuxuatForm.ShowDialog();
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void bt_xuatchitiethd_Click(object sender, EventArgs e)
         {
-            string mahd = txt_madh.Text;
-            string manv = cmb_manv.SelectedValue.ToString();
-            string tenkh = txt_tenkh.Text;
-            string sdt = txt_sdt.Text;
-            string diachi = txt_diachi.Text;
-            DateTime ngaymua = datetimepacket_datecreate.Value;
 
-
-            DataTable hoadonData = new DataTable();
-            hoadonData.Columns.Add("MaSP");
-            hoadonData.Columns.Add("TenSP");
-            hoadonData.Columns.Add("SoLuongMua");
-            hoadonData.Columns.Add("Giaban");
-            hoadonData.Columns.Add("Thanhtien");
-
-            foreach (DataGridViewRow row in dgv_donhang.Rows)
-            {
-                if (row.Cells["MaSP"].Value != null && row.Cells["SoLuongMua"].Value != null && row.Cells["Thanhtien"].Value != null)
-                {
-                    DataRow newRow = hoadonData.NewRow();
-                    newRow["MaSP"] = row.Cells["MaSP"].Value.ToString();
-                    newRow["TenSP"] = row.Cells["TenSP"].Value.ToString();
-                    newRow["SoLuongMua"] = row.Cells["Soluongmua"].Value.ToString();
-                    newRow["Giaban"] = row.Cells["Giaban"].Value.ToString();
-
-                    newRow["Thanhtien"] = row.Cells["Thanhtien"].Value.ToString();
-                    hoadonData.Rows.Add(newRow);
-                }
-            }
-
-
-            Chitietdonhang chitietphieuxuatForm = new Chitietdonhang(mahd, manv, tenkh, sdt, diachi, ngaymua, hoadonData);
-            chitietphieuxuatForm.ShowDialog();
         }
 
         private void bt_excel_Click(object sender, EventArgs e)
@@ -420,28 +429,32 @@ namespace GUI
 
                         foreach (var hd in db.hoadons.ToList())
                         {
-
                             foreach (var ct in hd.chitiethoadons)
                             {
                                 data.Add(new
                                 {
                                     MãHóaĐơn = hd.madh,
-                                    TênSảnPhẩm = ct.sanpham.tensp ?? "N/A",  
-                                    TênNhacungCap = ct.sanpham.nhacungcap.tenncc ?? "N/A",  
-                                    GiáNhập = ct.sanpham.gianhap?.ToString("N0") ?? "0",  
-                                    GiáBán = ct.sanpham.giaban?.ToString("N0") ?? "0",  
-                                    SốLượng = ct.soluong ?? 0, 
+                                    TênKháchHàng = hd.tenkh ?? "N/A",
+                                    SốĐiệnThoại = hd.sdt ?? "N/A",
+                                    ĐịaChỉ = hd.diachi ?? "N/A",
+                                    TênSảnPhẩm = ct.sanpham.tensp ?? "N/A",
+                                    TênNhacungCap = ct.sanpham.nhacungcap.tenncc ?? "N/A",
+                                    GiáNhập = ct.sanpham.gianhap?.ToString("N0") ?? "0",
+                                    GiáBán = ct.sanpham.giaban?.ToString("N0") ?? "0",
+                                    SốLượng = ct.soluong ?? 0,
                                     ThànhTiền = (ct.dongia ?? 0),
-                                    MãNhânViên = hd.manv, 
-                                    NgàyMua = hd.ngaymua?.ToString("dd-MM-yyyy") ?? "N/A"  
+                                    MãNhânViên = hd.manv,
+                                    NgàyMua = hd.ngaymua?.ToString("dd-MM-yyyy") ?? "N/A"
                                 });
                             }
                         }
 
-
                         var columnMapping = new Dictionary<string, Func<dynamic, object>>
                         {
                             { "Mã Hóa Đơn", row => row.MãHóaĐơn },
+                            { "Tên Khách Hàng", row => row.TênKháchHàng },
+                            { "Số Điện Thoại", row => row.SốĐiệnThoại },
+                            { "Địa Chỉ", row => row.ĐịaChỉ },
                             { "Tên Sản Phẩm", row => row.TênSảnPhẩm },
                             { "Tên Nhà Cung Cấp", row => row.TênNhacungCap },
                             { "Giá Nhập", row => row.GiáNhập },

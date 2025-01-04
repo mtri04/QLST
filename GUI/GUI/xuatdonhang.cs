@@ -1,4 +1,6 @@
-﻿using System;
+﻿using DAL.Model;
+using Microsoft.Reporting.WinForms;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -12,78 +14,77 @@ namespace GUI
 {
     public partial class xuatdonhang : Form
     {
-        // Các property để lưu thông tin
         public string MaHD { get; set; }
         public string TenKH { get; set; }
         public string SDT { get; set; }
         public string DiaChi { get; set; }
         public string MaNV { get; set; }
         public DateTime NgayMua { get; set; }
-        public DataTable HoaDonData { get; set; }  // Dữ liệu cho DataGridView
-        public xuatdonhang(string mahd, string tenkh, string sdt, string diachi, string manv, DateTime ngaymua, DataTable hoadonData)
+        public int? giaban { get; set; }
+        public int? soluong { get; set; }
+        public string masp { get; set; }
+        public string tensp { get; set; }
+        public decimal? dongia { get; set; }
+
+        public xuatdonhang(string maHD, string tenKH, string sdt, string diaChi, string maNV, DateTime ngayMua, int? giaBan, int? soLuong, string maSP, string tenSP, decimal? donGia)
         {
             InitializeComponent();
-
-            // Khởi tạo giá trị cho các property
-            MaHD = mahd;
-            TenKH = tenkh;
+            MaHD = maHD;
+            TenKH = tenKH;
             SDT = sdt;
-            DiaChi = diachi;
-            MaNV = manv;
-            NgayMua = ngaymua;
-            HoaDonData = hoadonData;
+            DiaChi = diaChi;
+            MaNV = maNV;
+            NgayMua = ngayMua;
+            giaban = giaBan;
+            soluong = soLuong;
+            masp = maSP;
+            tensp = tenSP;
+            dongia = donGia;
+
         }
-        // Hàm để cập nhật thông tin từ form tạo đơn hàng
-        private void XuatThongTin()
+        public void LoadData(DataTable hoadonData)
         {
-            // Cập nhật các label với thông tin từ đơn hàng
-            lb_mahd.Text = MaHD;
-            lb_tenkh.Text = TenKH;
-            lb_sdt.Text = SDT;
-            lb_diachi.Text = DiaChi;
-            lb_manv.Text = MaNV;
-            lb_ngaymua.Text = NgayMua.ToString("dd/MM/yyyy");
+            DataTable donHangReportData = new DataTable();
+            donHangReportData.Columns.Add("MaHD", typeof(string));
+            donHangReportData.Columns.Add("TenKH", typeof(string));
+            donHangReportData.Columns.Add("SDT", typeof(string));
+            donHangReportData.Columns.Add("DiaChi", typeof(string));
+            donHangReportData.Columns.Add("MaNV", typeof(string));
+            donHangReportData.Columns.Add("NgayMua", typeof(DateTime));
+            donHangReportData.Columns.Add("MaSP", typeof(string));
+            donHangReportData.Columns.Add("TenSP", typeof(string));
+            donHangReportData.Columns.Add("SoLuong", typeof(int));
+            donHangReportData.Columns.Add("Giaban", typeof(decimal));
+            donHangReportData.Columns.Add("DonGia", typeof(decimal));
+            donHangReportData.Columns.Add("Thanhtien", typeof(decimal));
+            donHangReportData.Columns.Add("TongTien", typeof(decimal));
+            decimal totalAmount = 0;
 
-            // Thêm cột STT vào DataTable nếu chưa có
-            if (!HoaDonData.Columns.Contains("STT"))
+            foreach (DataRow row in hoadonData.Rows)
             {
-                HoaDonData.Columns.Add("STT", typeof(int)); // Thêm cột STT vào DataTable
+                decimal thanhTien = row["Thanhtien"] != DBNull.Value ? Convert.ToDecimal(row["Thanhtien"]) : 0;
+                totalAmount += thanhTien;
+                donHangReportData.Rows.Add(
+                    MaHD ?? "N/A",
+                    TenKH ?? "N/A",
+                    SDT ?? "N/A",
+                    DiaChi ?? "N/A",
+                    MaNV ?? "N/A",
+                    NgayMua != DateTime.MinValue ? NgayMua : (DateTime?)null,
+                    row["MaSP"].ToString(),
+                    row["TenSP"].ToString(),
+                    Convert.ToInt32(row["SoLuongMua"]),
+                    row["Giaban"] != DBNull.Value ? Convert.ToDecimal(row["Giaban"]) : 0,
+                    thanhTien,
+                    totalAmount
+                );
             }
 
-            // Cập nhật số thứ tự cho từng dòng trong DataTable
-            int stt = 1;
-            foreach (DataRow row in HoaDonData.Rows)
-            {
-                row["STT"] = stt++; // Gán số thứ tự cho mỗi dòng
-            }
-
-            // Thiết lập DataGridView với dữ liệu từ HoaDonData
-            dgv_hoadon.DataSource = HoaDonData;
-            // Di chuyển cột STT lên đầu
-            dgv_hoadon.Columns["STT"].DisplayIndex = 0;
-            // Tính tổng tiền và hiển thị vào label
-            double tongTien = 0;
-            foreach (DataRow row in HoaDonData.Rows)
-            {
-                tongTien += Convert.ToDouble(row["Thanhtien"]);
-            }
-            lb_tongtien.Text = tongTien.ToString("N2");
-            lb_phaitra.Text = lb_tongtien.Text;
-
-            // Cập nhật tiêu đề các cột của DataGridView
-            dgv_hoadon.Columns["STT"].HeaderText = "STT";
-            dgv_hoadon.Columns["STT"].Width = 50; // Đặt chiều rộng cho cột STT
-            dgv_hoadon.Columns["MaSP"].HeaderText = "Mã SP";
-            dgv_hoadon.Columns["TenSP"].HeaderText = "Tên SP";
-            dgv_hoadon.Columns["Soluongmua"].HeaderText = "Số lượng mua";
-            dgv_hoadon.Columns["Giaban"].HeaderText = "Giá Bán";
-            dgv_hoadon.Columns["Thanhtien"].HeaderText = "Thành tiền";
+            reportViewer1.ProcessingMode = ProcessingMode.Local;
+            reportViewer1.LocalReport.DataSources.Clear();
+            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet1", donHangReportData));
+            reportViewer1.LocalReport.Refresh();
+            reportViewer1.RefreshReport();
         }
-
-        private void xuatdonhang_Load(object sender, EventArgs e)
-        {
-            XuatThongTin();
-        }
-
     }
 }

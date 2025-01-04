@@ -57,9 +57,9 @@ namespace GUI
 
             lb_ngaythangnam.Text = NgayGioDangNhap.ToString("dddd, dd/MM/yyyy", new System.Globalization.CultureInfo("vi-VN"));
 
-            bt_quanlynhanvien.Enabled = IsAdmin;
-            bt_nhacungcap.Enabled = IsAdmin;
-            bt_thongke.Enabled = IsAdmin;
+            //bt_quanlynhanvien.Enabled = IsAdmin;
+            //bt_nhacungcap.Enabled = IsAdmin;
+            //bt_thongke.Enabled = IsAdmin;
 
             timer = new Timer();
             timer.Interval = 1000;
@@ -125,33 +125,33 @@ namespace GUI
 
         private void bt_thongke_Click(object sender, EventArgs e)
         {
-            //if (!IsAdmin)
-            //{
-            //    MessageBox.Show("Bạn không có quyền truy cập chức năng này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
+            if (!IsAdmin)
+            {
+                MessageBox.Show("Bạn không có quyền truy cập chức năng này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             OpenChildForm(new Thongke());
             ChangeButtonColor(bt_thongke);
         }
 
         private void bt_nhacungcap_Click(object sender, EventArgs e)
         {
-            //if (!IsAdmin)
-            //{
-            //    MessageBox.Show("Bạn không có quyền truy cập chức năng này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
+            if (!IsAdmin)
+            {
+                MessageBox.Show("Bạn không có quyền truy cập chức năng này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             OpenChildForm(new Nhacungcap());
             ChangeButtonColor(bt_nhacungcap);
         }
 
         private void bt_quanlynhanvien_Click(object sender, EventArgs e)
         {
-            //if (!IsAdmin)
-            //{
-            //    MessageBox.Show("Bạn không có quyền truy cập chức năng này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-            //    return;
-            //}
+            if (!IsAdmin)
+            {
+                MessageBox.Show("Bạn không có quyền truy cập chức năng này!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             OpenChildForm(new Nhanvien());
             ChangeButtonColor(bt_quanlynhanvien);
         }

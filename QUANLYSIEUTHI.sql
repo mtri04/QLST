@@ -161,5 +161,33 @@ VALUES
 
 
 
+CREATE PROCEDURE GetHoaDonDetails
+    @MaHD NVARCHAR(50)
+AS
+BEGIN
+    SELECT 
+        hd.madh AS MaHD,
+        hd.tenkh AS TenKH,
+        hd.diachi AS DiaChi,
+        hd.sdt AS SDT,
+        hd.ngaymua AS NgayMua,
+        hd.manv AS MaNV,
+        sp.masp AS MaSP,
+        sp.tensp AS TenSP,
+        sp.giaban AS GiaBan,
+        cthd.soluong AS SoLuong,
+        cthd.dongia AS DonGia,
+        SUM(cthd.dongia) OVER (PARTITION BY hd.madh) AS TongTien
+    FROM 
+        hoadon hd
+    INNER JOIN 
+        chitiethoadon cthd ON hd.madh = cthd.madh
+    INNER JOIN 
+        sanpham sp ON cthd.masp = sp.masp
+    WHERE 
+        hd.madh = @MaHD;
+END;
+GO
 
 
+EXEC GetHoaDonDetails @MaHD = 'HD001';

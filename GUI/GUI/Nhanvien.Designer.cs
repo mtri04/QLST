@@ -32,6 +32,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.txt_sdt = new System.Windows.Forms.TextBox();
             this.bt_addanh = new System.Windows.Forms.Button();
+            this.picture_avartar = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txt_fullname = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -43,6 +44,7 @@
             this.bt_nhaplai = new System.Windows.Forms.Button();
             this.bt_xoa = new System.Windows.Forms.Button();
             this.bt_sua = new System.Windows.Forms.Button();
+            this.bt_them = new System.Windows.Forms.Button();
             this.dgv_nhanvien = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -50,16 +52,13 @@
             this.Column4 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.bt_them = new System.Windows.Forms.Button();
-            this.picture_avartar = new System.Windows.Forms.PictureBox();
+            this.bt_excel = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picture_avartar)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_nhanvien)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picture_avartar)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -102,6 +101,17 @@
             this.bt_addanh.Text = "...";
             this.bt_addanh.UseVisualStyleBackColor = true;
             this.bt_addanh.Click += new System.EventHandler(this.bt_addavatar_Click);
+            // 
+            // picture_avartar
+            // 
+            this.picture_avartar.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.picture_avartar.Image = ((System.Drawing.Image)(resources.GetObject("picture_avartar.Image")));
+            this.picture_avartar.Location = new System.Drawing.Point(307, 20);
+            this.picture_avartar.Name = "picture_avartar";
+            this.picture_avartar.Size = new System.Drawing.Size(332, 258);
+            this.picture_avartar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picture_avartar.TabIndex = 117;
+            this.picture_avartar.TabStop = false;
             // 
             // label8
             // 
@@ -199,7 +209,7 @@
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.groupBox1.Size = new System.Drawing.Size(189, 309);
+            this.groupBox1.Size = new System.Drawing.Size(189, 299);
             this.groupBox1.TabIndex = 71;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Chức Năng";
@@ -253,6 +263,24 @@
             this.bt_sua.UseVisualStyleBackColor = true;
             this.bt_sua.Click += new System.EventHandler(this.bt_sua_Click_1);
             // 
+            // bt_them
+            // 
+            this.bt_them.BackColor = System.Drawing.SystemColors.HighlightText;
+            this.bt_them.BackgroundImage = global::GUI.Properties.Resources._3d;
+            this.bt_them.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bt_them.FlatAppearance.BorderSize = 0;
+            this.bt_them.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_them.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.bt_them.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_them.Location = new System.Drawing.Point(42, 35);
+            this.bt_them.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.bt_them.Name = "bt_them";
+            this.bt_them.Size = new System.Drawing.Size(97, 49);
+            this.bt_them.TabIndex = 8;
+            this.bt_them.Text = "Thêm";
+            this.bt_them.UseVisualStyleBackColor = false;
+            this.bt_them.Click += new System.EventHandler(this.bt_them_Click_1);
+            // 
             // dgv_nhanvien
             // 
             this.dgv_nhanvien.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
@@ -269,7 +297,7 @@
             this.dgv_nhanvien.Name = "dgv_nhanvien";
             this.dgv_nhanvien.RowHeadersWidth = 62;
             this.dgv_nhanvien.RowTemplate.Height = 28;
-            this.dgv_nhanvien.Size = new System.Drawing.Size(882, 319);
+            this.dgv_nhanvien.Size = new System.Drawing.Size(1069, 319);
             this.dgv_nhanvien.TabIndex = 72;
             this.dgv_nhanvien.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgv_nhanvien_CellClick);
             // 
@@ -308,20 +336,10 @@
             this.pictureBox2.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox2.Image")));
             this.pictureBox2.Location = new System.Drawing.Point(871, 14);
             this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(218, 181);
+            this.pictureBox2.Size = new System.Drawing.Size(210, 299);
             this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pictureBox2.TabIndex = 75;
             this.pictureBox2.TabStop = false;
-            // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(900, 386);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(189, 319);
-            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox1.TabIndex = 74;
-            this.pictureBox1.TabStop = false;
             // 
             // button1
             // 
@@ -338,41 +356,28 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.bt_quanlytaikhoan_Click);
             // 
-            // bt_them
+            // bt_excel
             // 
-            this.bt_them.BackColor = System.Drawing.SystemColors.HighlightText;
-            this.bt_them.BackgroundImage = global::GUI.Properties.Resources._3d;
-            this.bt_them.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bt_them.FlatAppearance.BorderSize = 0;
-            this.bt_them.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_them.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.bt_them.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bt_them.Location = new System.Drawing.Point(42, 35);
-            this.bt_them.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.bt_them.Name = "bt_them";
-            this.bt_them.Size = new System.Drawing.Size(97, 49);
-            this.bt_them.TabIndex = 8;
-            this.bt_them.Text = "Thêm";
-            this.bt_them.UseVisualStyleBackColor = false;
-            this.bt_them.Click += new System.EventHandler(this.bt_them_Click_1);
-            // 
-            // picture_avartar
-            // 
-            this.picture_avartar.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.picture_avartar.Location = new System.Drawing.Point(307, 20);
-            this.picture_avartar.Name = "picture_avartar";
-            this.picture_avartar.Size = new System.Drawing.Size(332, 258);
-            this.picture_avartar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picture_avartar.TabIndex = 117;
-            this.picture_avartar.TabStop = false;
+            this.bt_excel.BackColor = System.Drawing.Color.LawnGreen;
+            this.bt_excel.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.bt_excel.Image = global::GUI.Properties.Resources.Microsoft_Excel_2013_icon;
+            this.bt_excel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_excel.Location = new System.Drawing.Point(945, 319);
+            this.bt_excel.Name = "bt_excel";
+            this.bt_excel.Size = new System.Drawing.Size(136, 61);
+            this.bt_excel.TabIndex = 127;
+            this.bt_excel.Text = "Excel";
+            this.bt_excel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bt_excel.UseVisualStyleBackColor = false;
+            this.bt_excel.Click += new System.EventHandler(this.bt_excel_Click);
             // 
             // Nhanvien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1093, 717);
+            this.Controls.Add(this.bt_excel);
             this.Controls.Add(this.pictureBox2);
-            this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.dgv_nhanvien);
             this.Controls.Add(this.groupBox1);
@@ -381,11 +386,10 @@
             this.Text = "Nhanvien";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picture_avartar)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgv_nhanvien)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picture_avartar)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -415,7 +419,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column4;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column5;
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.Button bt_excel;
     }
 }

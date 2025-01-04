@@ -41,6 +41,10 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txt_manv = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.bt_nhaplai = new System.Windows.Forms.Button();
+            this.bt_xoa = new System.Windows.Forms.Button();
+            this.bt_sua = new System.Windows.Forms.Button();
+            this.bt_them = new System.Windows.Forms.Button();
             this.dgv_taikhoan = new System.Windows.Forms.DataGridView();
             this.Column1 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column2 = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -49,10 +53,6 @@
             this.Column5 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.panel_body = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
-            this.bt_nhaplai = new System.Windows.Forms.Button();
-            this.bt_xoa = new System.Windows.Forms.Button();
-            this.bt_sua = new System.Windows.Forms.Button();
-            this.bt_them = new System.Windows.Forms.Button();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_taikhoan)).BeginInit();
@@ -209,6 +209,70 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Chức Năng";
             // 
+            // bt_nhaplai
+            // 
+            this.bt_nhaplai.BackgroundImage = global::GUI.Properties.Resources._3d;
+            this.bt_nhaplai.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bt_nhaplai.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_nhaplai.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.bt_nhaplai.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_nhaplai.Location = new System.Drawing.Point(42, 240);
+            this.bt_nhaplai.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.bt_nhaplai.Name = "bt_nhaplai";
+            this.bt_nhaplai.Size = new System.Drawing.Size(97, 52);
+            this.bt_nhaplai.TabIndex = 12;
+            this.bt_nhaplai.Text = "Refesh";
+            this.bt_nhaplai.UseVisualStyleBackColor = true;
+            this.bt_nhaplai.Click += new System.EventHandler(this.bt_nhaplai_Click);
+            // 
+            // bt_xoa
+            // 
+            this.bt_xoa.BackgroundImage = global::GUI.Properties.Resources._3d;
+            this.bt_xoa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bt_xoa.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_xoa.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.bt_xoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_xoa.Location = new System.Drawing.Point(42, 172);
+            this.bt_xoa.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.bt_xoa.Name = "bt_xoa";
+            this.bt_xoa.Size = new System.Drawing.Size(97, 52);
+            this.bt_xoa.TabIndex = 11;
+            this.bt_xoa.Text = "Xóa";
+            this.bt_xoa.UseVisualStyleBackColor = true;
+            this.bt_xoa.Click += new System.EventHandler(this.bt_xoa_Click);
+            // 
+            // bt_sua
+            // 
+            this.bt_sua.BackgroundImage = global::GUI.Properties.Resources._3d;
+            this.bt_sua.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bt_sua.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_sua.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.bt_sua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_sua.Location = new System.Drawing.Point(42, 103);
+            this.bt_sua.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.bt_sua.Name = "bt_sua";
+            this.bt_sua.Size = new System.Drawing.Size(97, 53);
+            this.bt_sua.TabIndex = 9;
+            this.bt_sua.Text = "Sửa";
+            this.bt_sua.UseVisualStyleBackColor = true;
+            this.bt_sua.Click += new System.EventHandler(this.bt_sua_Click);
+            // 
+            // bt_them
+            // 
+            this.bt_them.BackgroundImage = global::GUI.Properties.Resources._3d;
+            this.bt_them.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.bt_them.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bt_them.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.bt_them.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_them.Location = new System.Drawing.Point(42, 35);
+            this.bt_them.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.bt_them.Name = "bt_them";
+            this.bt_them.Size = new System.Drawing.Size(97, 53);
+            this.bt_them.TabIndex = 8;
+            this.bt_them.Text = "Thêm";
+            this.bt_them.UseVisualStyleBackColor = true;
+            this.bt_them.Click += new System.EventHandler(this.bt_them_Click);
+            // 
             // dgv_taikhoan
             // 
             this.dgv_taikhoan.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
@@ -290,70 +354,6 @@
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // bt_nhaplai
-            // 
-            this.bt_nhaplai.BackgroundImage = global::GUI.Properties.Resources._3d;
-            this.bt_nhaplai.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bt_nhaplai.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_nhaplai.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.bt_nhaplai.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bt_nhaplai.Location = new System.Drawing.Point(42, 240);
-            this.bt_nhaplai.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.bt_nhaplai.Name = "bt_nhaplai";
-            this.bt_nhaplai.Size = new System.Drawing.Size(97, 52);
-            this.bt_nhaplai.TabIndex = 12;
-            this.bt_nhaplai.Text = "Refesh";
-            this.bt_nhaplai.UseVisualStyleBackColor = true;
-            this.bt_nhaplai.Click += new System.EventHandler(this.bt_nhaplai_Click);
-            // 
-            // bt_xoa
-            // 
-            this.bt_xoa.BackgroundImage = global::GUI.Properties.Resources._3d;
-            this.bt_xoa.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bt_xoa.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_xoa.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.bt_xoa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bt_xoa.Location = new System.Drawing.Point(42, 172);
-            this.bt_xoa.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.bt_xoa.Name = "bt_xoa";
-            this.bt_xoa.Size = new System.Drawing.Size(97, 52);
-            this.bt_xoa.TabIndex = 11;
-            this.bt_xoa.Text = "Xóa";
-            this.bt_xoa.UseVisualStyleBackColor = true;
-            this.bt_xoa.Click += new System.EventHandler(this.bt_xoa_Click);
-            // 
-            // bt_sua
-            // 
-            this.bt_sua.BackgroundImage = global::GUI.Properties.Resources._3d;
-            this.bt_sua.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bt_sua.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_sua.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.bt_sua.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bt_sua.Location = new System.Drawing.Point(42, 103);
-            this.bt_sua.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.bt_sua.Name = "bt_sua";
-            this.bt_sua.Size = new System.Drawing.Size(97, 53);
-            this.bt_sua.TabIndex = 9;
-            this.bt_sua.Text = "Sửa";
-            this.bt_sua.UseVisualStyleBackColor = true;
-            this.bt_sua.Click += new System.EventHandler(this.bt_sua_Click);
-            // 
-            // bt_them
-            // 
-            this.bt_them.BackgroundImage = global::GUI.Properties.Resources._3d;
-            this.bt_them.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.bt_them.Font = new System.Drawing.Font("Times New Roman", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bt_them.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.bt_them.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bt_them.Location = new System.Drawing.Point(42, 35);
-            this.bt_them.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.bt_them.Name = "bt_them";
-            this.bt_them.Size = new System.Drawing.Size(97, 53);
-            this.bt_them.TabIndex = 8;
-            this.bt_them.Text = "Thêm";
-            this.bt_them.UseVisualStyleBackColor = true;
-            this.bt_them.Click += new System.EventHandler(this.bt_them_Click);
-            // 
             // Quanlytaikhoan
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -364,6 +364,7 @@
             this.Controls.Add(this.dgv_taikhoan);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox2);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Quanlytaikhoan";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Quanlytaikhoan";

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Sanpham));
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.cmb_manv = new System.Windows.Forms.ComboBox();
             this.label7 = new System.Windows.Forms.Label();
@@ -37,6 +38,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.cmb_mancc = new System.Windows.Forms.ComboBox();
             this.bt_addanh = new System.Windows.Forms.Button();
+            this.picture_avartar = new System.Windows.Forms.PictureBox();
             this.label8 = new System.Windows.Forms.Label();
             this.txt_tensp = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -60,18 +62,17 @@
             this.Column8 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column9 = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.bt_excel = new System.Windows.Forms.Button();
-            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.bt_nhaplai = new System.Windows.Forms.Button();
             this.bt_xoa = new System.Windows.Forms.Button();
             this.bt_sua = new System.Windows.Forms.Button();
             this.bt_them = new System.Windows.Forms.Button();
-            this.picture_avartar = new System.Windows.Forms.PictureBox();
+            this.bt_excel = new System.Windows.Forms.Button();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picture_avartar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_sanpham)).BeginInit();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picture_avartar)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox2
@@ -187,6 +188,17 @@
             this.bt_addanh.Text = "...";
             this.bt_addanh.UseVisualStyleBackColor = true;
             this.bt_addanh.Click += new System.EventHandler(this.bt_addanh_Click);
+            // 
+            // picture_avartar
+            // 
+            this.picture_avartar.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.picture_avartar.Image = ((System.Drawing.Image)(resources.GetObject("picture_avartar.Image")));
+            this.picture_avartar.Location = new System.Drawing.Point(321, 20);
+            this.picture_avartar.Name = "picture_avartar";
+            this.picture_avartar.Size = new System.Drawing.Size(303, 258);
+            this.picture_avartar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.picture_avartar.TabIndex = 117;
+            this.picture_avartar.TabStop = false;
             // 
             // label8
             // 
@@ -431,32 +443,6 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Chức Năng";
             // 
-            // bt_excel
-            // 
-            this.bt_excel.BackColor = System.Drawing.Color.LawnGreen;
-            this.bt_excel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.bt_excel.Image = global::GUI.Properties.Resources.Microsoft_Excel_2013_icon;
-            this.bt_excel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bt_excel.Location = new System.Drawing.Point(773, 298);
-            this.bt_excel.Name = "bt_excel";
-            this.bt_excel.Size = new System.Drawing.Size(136, 61);
-            this.bt_excel.TabIndex = 124;
-            this.bt_excel.Text = "Excel";
-            this.bt_excel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bt_excel.UseVisualStyleBackColor = false;
-            this.bt_excel.Click += new System.EventHandler(this.bt_excel_Click);
-            // 
-            // pictureBox2
-            // 
-            this.pictureBox2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.pictureBox2.Image = global::GUI.Properties.Resources.search;
-            this.pictureBox2.Location = new System.Drawing.Point(669, 316);
-            this.pictureBox2.Name = "pictureBox2";
-            this.pictureBox2.Size = new System.Drawing.Size(33, 31);
-            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pictureBox2.TabIndex = 123;
-            this.pictureBox2.TabStop = false;
-            // 
             // bt_nhaplai
             // 
             this.bt_nhaplai.BackgroundImage = global::GUI.Properties.Resources._3d;
@@ -521,15 +507,31 @@
             this.bt_them.UseVisualStyleBackColor = true;
             this.bt_them.Click += new System.EventHandler(this.bt_them_Click);
             // 
-            // picture_avartar
+            // bt_excel
             // 
-            this.picture_avartar.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            this.picture_avartar.Location = new System.Drawing.Point(321, 20);
-            this.picture_avartar.Name = "picture_avartar";
-            this.picture_avartar.Size = new System.Drawing.Size(303, 258);
-            this.picture_avartar.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.picture_avartar.TabIndex = 117;
-            this.picture_avartar.TabStop = false;
+            this.bt_excel.BackColor = System.Drawing.Color.LawnGreen;
+            this.bt_excel.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.bt_excel.Image = global::GUI.Properties.Resources.Microsoft_Excel_2013_icon;
+            this.bt_excel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_excel.Location = new System.Drawing.Point(773, 298);
+            this.bt_excel.Name = "bt_excel";
+            this.bt_excel.Size = new System.Drawing.Size(136, 61);
+            this.bt_excel.TabIndex = 124;
+            this.bt_excel.Text = "Excel";
+            this.bt_excel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bt_excel.UseVisualStyleBackColor = false;
+            this.bt_excel.Click += new System.EventHandler(this.bt_excel_Click);
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.pictureBox2.Image = global::GUI.Properties.Resources.search;
+            this.pictureBox2.Location = new System.Drawing.Point(669, 316);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(33, 31);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox2.TabIndex = 123;
+            this.pictureBox2.TabStop = false;
             // 
             // Sanpham
             // 
@@ -547,10 +549,10 @@
             this.Text = "Sanpham";
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.picture_avartar)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_sanpham)).EndInit();
             this.groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.picture_avartar)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

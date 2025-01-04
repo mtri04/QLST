@@ -34,30 +34,23 @@ namespace GUI
         }
         private void bt_nhaphang_Click(object sender, EventArgs e)
         {
-
             if (dgv_nhaphang.SelectedRows.Count > 0)
             {
-
                 var selectedRow = dgv_nhaphang.SelectedRows[0];
-
-
                 string maSP = selectedRow.Cells["MaSP"].Value.ToString();
-
 
                 if (int.TryParse(txt_soluongnhap.Text, out int soLuongNhap) && soLuongNhap > 0)
                 {
-
                     var product = contextDB.sanphams.FirstOrDefault(sp => sp.masp == maSP);
 
                     if (product != null)
                     {
-
                         product.solg += soLuongNhap;
+                        product.ngaynhap = DateTime.Now;
 
                         contextDB.SaveChanges();
 
                         MessageBox.Show("Nhập hàng thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
                     }
                     else
                     {
@@ -83,11 +76,6 @@ namespace GUI
                 khohangForm.LoadKhoHangData();
             }
             this.Close();
-        }
-
-        private void dgv_nhaphang_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void Nhaphang_Load(object sender, EventArgs e)
