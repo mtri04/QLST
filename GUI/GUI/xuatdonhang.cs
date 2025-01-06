@@ -57,13 +57,10 @@ namespace GUI
             donHangReportData.Columns.Add("Giaban", typeof(decimal));
             donHangReportData.Columns.Add("DonGia", typeof(decimal));
             donHangReportData.Columns.Add("Thanhtien", typeof(decimal));
-            donHangReportData.Columns.Add("TongTien", typeof(decimal));
-            decimal totalAmount = 0;
 
             foreach (DataRow row in hoadonData.Rows)
             {
                 decimal thanhTien = row["Thanhtien"] != DBNull.Value ? Convert.ToDecimal(row["Thanhtien"]) : 0;
-                totalAmount += thanhTien;
                 donHangReportData.Rows.Add(
                     MaHD ?? "N/A",
                     TenKH ?? "N/A",
@@ -75,8 +72,7 @@ namespace GUI
                     row["TenSP"].ToString(),
                     Convert.ToInt32(row["SoLuongMua"]),
                     row["Giaban"] != DBNull.Value ? Convert.ToDecimal(row["Giaban"]) : 0,
-                    thanhTien,
-                    totalAmount
+                    thanhTien
                 );
             }
 
@@ -86,5 +82,6 @@ namespace GUI
             reportViewer1.LocalReport.Refresh();
             reportViewer1.RefreshReport();
         }
+
     }
 }

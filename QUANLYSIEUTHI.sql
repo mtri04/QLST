@@ -191,3 +191,40 @@ GO
 
 
 EXEC GetHoaDonDetails @MaHD = 'HD001';
+
+
+
+alter PROCEDURE GetInvoiceDetails
+    @mahd NVARCHAR(50)
+AS
+BEGIN
+    -- Chọn thông tin từ hóa đơn, chi tiết hóa đơn và các bảng liên quan
+    SELECT 
+		hd.madh AS MaHD, 
+        hd.tenkh AS TenKH,
+        hd.sdt AS SDT,
+        hd.diachi AS DiaChi,
+        hd.manv AS MaNV,
+        hd.ngaymua AS NgayMua,
+        cthd.soluong AS SoLuong,
+        sp.masp AS MaSP,
+        sp.tensp AS TenSP,
+        ncc.tenncc AS TenNCC,
+        sp.gianhap AS GiaNhap,
+        sp.giaban AS GiaBan,
+        sp.hsd AS HSD,
+        sp.noisx AS NoiSX,
+        cthd.dongia AS DonGia
+    FROM 
+        hoadon hd
+    INNER JOIN 
+        chitiethoadon cthd ON hd.madh = cthd.madh
+    INNER JOIN 
+        sanpham sp ON cthd.masp = sp.masp
+    LEFT JOIN 
+        nhacungcap ncc ON sp.mancc = ncc.mancc
+    WHERE 
+        hd.madh = @mahd;
+END;
+
+EXEC GetInvoiceDetails @mahd = 'HD001';

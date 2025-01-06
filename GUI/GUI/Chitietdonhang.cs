@@ -1,4 +1,5 @@
 ﻿using DAL.Model;
+using Microsoft.Reporting.WinForms;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,99 +14,107 @@ namespace GUI
 {
     public partial class Chitietdonhang : Form
     {
-        private MarketModel db = new MarketModel();
-        // Các property để lưu thông tin
         public string MaHD { get; set; }
         public string TenKH { get; set; }
         public string SDT { get; set; }
         public string DiaChi { get; set; }
         public string MaNV { get; set; }
         public DateTime NgayMua { get; set; }
-        public DataTable HoaDonData { get; set; }  // Dữ liệu cho DataGridView
-        public Chitietdonhang(string mahd, string tenkh, string sdt, string diachi, string manv, DateTime ngaymua, DataTable hoadonData)
+        public int? soluong { get; set; }
+        public string masp { get; set; }
+        public string tensp { get; set; }
+        public string tenncc { get; set; }
+        public int? gianhap { get; set; }
+        public int? giaban { get; set; }
+        public DateTime? hsd { get; set; }
+        public string noisx { get; set; }
+        public decimal? dongia { get; set; }
+        public Chitietdonhang(string maHD, string tenKH, string sdt, string diaChi, string maNV, DateTime ngayMua, decimal? donGia, string maSP, string tenSP, int giaNhap, int giaBan, DateTime HSD, string noiSX)
         {
             InitializeComponent();
-            // Khởi tạo giá trị cho các property
-            MaHD = mahd;
-            TenKH = tenkh;
+            MaHD = maHD;
+            TenKH = tenKH;
             SDT = sdt;
-            DiaChi = diachi;
-            MaNV = manv;
-            NgayMua = ngaymua;
-            HoaDonData = hoadonData;
+            DiaChi = diaChi;
+            MaNV = maNV;
+            NgayMua = ngayMua;
+            dongia = donGia;
+            masp = maSP;
+            tensp = tenSP;
+            gianhap = giaNhap;
+            giaban = giaBan;
+            hsd = HSD;
+            noisx = noiSX;
         }
-        private void XuatThongTin()
+        public void LoadData(DataTable chiTietData)
         {
-            lb_mahd.Text = MaHD;
-            lb_tenkh.Text = TenKH;
-            lb_sdt.Text = SDT;
-            lb_diachi.Text = DiaChi;
-            lb_manv.Text = MaNV;
-            lb_ngaymua.Text = NgayMua.ToString("dd/MM/yyyy");
+            // Tạo DataTable cho ReportViewer
+            DataTable reportData = new DataTable();
+            reportData.Columns.Add("MaHD", typeof(string));
+            reportData.Columns.Add("TenKH", typeof(string));
+            reportData.Columns.Add("SDT", typeof(string));
+            reportData.Columns.Add("DiaChi", typeof(string));
+            reportData.Columns.Add("MaNV", typeof(string));
+            reportData.Columns.Add("NgayMua", typeof(DateTime));
+            reportData.Columns.Add("MaSP", typeof(string));
+            reportData.Columns.Add("TenSP", typeof(string));
+            reportData.Columns.Add("TenNCC", typeof(string));
+            reportData.Columns.Add("GiaNhap", typeof(decimal));
+            reportData.Columns.Add("GiaBan", typeof(decimal));
+            reportData.Columns.Add("HSD", typeof(string));
+            reportData.Columns.Add("NoiSX", typeof(string));
+            reportData.Columns.Add("SoLuong", typeof(int));
+            reportData.Columns.Add("DonGia", typeof(decimal));
 
-            // Thêm cột STT vào DataTable nếu chưa có
-            if (!HoaDonData.Columns.Contains("STT"))
+            foreach (DataRow row in chiTietData.Rows)
             {
-                HoaDonData.Columns.Add("STT", typeof(int)); // Thêm cột STT vào DataTable
+                string maSP = row["MaSP"]?.ToString() ?? "N/A";
+                string tenSP = row["TenSP"]?.ToString() ?? "N/A";
+                string tenNCC = row["TenNCC"]?.ToString() ?? "N/A";
+                int giaNhap = 0;
+                int giaBan = 0;
+                string noiSX = row["NoiSX"]?.ToString() ?? "N/A";
+
+                if (decimal.TryParse(row["GiaNhap"]?.ToString(), out decimal tempGiaNhap))
+                    giaNhap = (int)tempGiaNhap;
+
+                if (decimal.TryParse(row["GiaBan"]?.ToString(), out decimal tempGiaBan))
+                    giaBan = (int)tempGiaBan;
+
+                string hsdValue = row["HSD"]?.ToString() ?? "N/A";
+
+
+                decimal thanhTien = row["Thanhtien"] != DBNull.Value ? Convert.ToDecimal(row["Thanhtien"]) : 0;
+
+                reportData.Rows.Add(
+                    MaHD ?? "N/A",
+                    TenKH ?? "N/A",
+                    SDT ?? "N/A",
+                    DiaChi ?? "N/A",
+                    MaNV ?? "N/A",
+                    NgayMua != DateTime.MinValue ? NgayMua : (DateTime?)null,
+                    maSP,
+                    tenSP,
+                    tenNCC,
+                    giaNhap,                       
+                    giaBan,
+                    hsdValue,
+                    noiSX,
+                    Convert.ToInt32(row["SoLuongMua"]),
+                    thanhTien
+                );
             }
 
-            // Cập nhật số thứ tự cho từng dòng trong DataTable
-            int stt = 1;
-            foreach (DataRow row in HoaDonData.Rows)
-            {
-                row["STT"] = stt++; // Gán số thứ tự cho mỗi dòng
-            }
-
-            // Thiết lập DataGridView với dữ liệu từ HoaDonData
-            dgv_hoadon.DataSource = HoaDonData;
-
-            // Di chuyển cột STT lên đầu
-            dgv_hoadon.Columns["STT"].DisplayIndex = 0;
-
-            // Thêm cột mancc và Giá nhập vào DataGridView nếu chưa có
-            if (!HoaDonData.Columns.Contains("ManCC"))
-            {
-                HoaDonData.Columns.Add("ManCC", typeof(string));
-                HoaDonData.Columns.Add("GiaNhap", typeof(decimal));
-            }
-
-            // Điền giá trị cho cột mới nếu cần
-            foreach (DataRow row in HoaDonData.Rows)
-            {
-                string maSP = row["MaSP"].ToString();
-                var product = db.sanphams.FirstOrDefault(p => p.masp == maSP);
-
-                if (product != null)
-                {
-                    row["ManCC"] = product.mancc;  // Lấy mancc từ sản phẩm
-                    row["GiaNhap"] = product.gianhap ?? 0;  // Lấy giá nhập từ sản phẩm
-                }
-                else
-                {
-                    row["ManCC"] = "N/A";  // Nếu không tìm thấy sản phẩm
-                    row["GiaNhap"] = 0;
-                }
-            }
-
-            // Cập nhật tiêu đề các cột của DataGridView
-            dgv_hoadon.Columns["STT"].HeaderText = "STT";
-            dgv_hoadon.Columns["STT"].Width = 50; // Đặt chiều rộng cho cột STT
-            dgv_hoadon.Columns["MaSP"].HeaderText = "Mã SP";
-            dgv_hoadon.Columns["TenSP"].HeaderText = "Tên SP";
-            dgv_hoadon.Columns["ManCC"].HeaderText = "Mã NCC";
-            dgv_hoadon.Columns["Soluongmua"].HeaderText = "Số lượng mua";
-            dgv_hoadon.Columns["GiaNhap"].HeaderText = "Giá Nhập";
-            dgv_hoadon.Columns["Giaban"].HeaderText = "Giá Bán";
-            dgv_hoadon.Columns["Thanhtien"].HeaderText = "Thành tiền";
+            reportViewer1.ProcessingMode = ProcessingMode.Local;
+            reportViewer1.LocalReport.DataSources.Clear();
+            reportViewer1.LocalReport.DataSources.Add(new ReportDataSource("DataSet2", reportData));
+            reportViewer1.LocalReport.Refresh();
+            reportViewer1.RefreshReport();
         }
 
-
-        private void Chitietdonhang_Load(object sender, EventArgs e)
+        private void reportViewer1_Load(object sender, EventArgs e)
         {
-            XuatThongTin();
-            // Cập nhật DataGridView để hiển thị cột mancc và Giá nhập
-            dgv_hoadon.Columns["ManCC"].HeaderText = "Mã NCC";
-            dgv_hoadon.Columns["GiaNhap"].HeaderText = "Giá Nhập";
+
         }
     }
 }

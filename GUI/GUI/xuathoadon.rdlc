@@ -435,10 +435,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox20</rd:DefaultName>
-        <Top>3.99528in</Top>
-        <Left>4.12028in</Left>
+        <Top>3.78695in</Top>
+        <Left>4.45361in</Left>
         <Height>0.25in</Height>
-        <Width>1.375in</Width>
+        <Width>1.04167in</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -659,11 +659,16 @@
             <TextRuns>
               <TextRun>
                 <Value>Ngày mua: </Value>
-                <Style />
+                <Style>
+                  <Format>=Format(Fields!NgayMua.Value, "dd-MM-yyyy HH:mm:ss")</Format>
+                </Style>
               </TextRun>
               <TextRun>
-                <Value>=Fields!NgayMua.Value</Value>
-                <Style />
+                <Value>=IIf(IsNothing(Fields!NgayMua.Value), "N/A", Format(CDate(Fields!NgayMua.Value), "dd-MM-yyyy hh:mm:ss tt"))
+</Value>
+                <Style>
+                  <Format>=Format(Fields!NgayMua.Value, "dd-MM-yyyy hh:mm:ss tt")</Format>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style />
@@ -700,8 +705,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox22</rd:DefaultName>
-        <Top>3.99528in</Top>
-        <Left>3.39806in</Left>
+        <Top>3.78695in</Top>
+        <Left>3.74528in</Left>
         <Height>0.25in</Height>
         <Width>0.69444in</Width>
         <ZIndex>10</ZIndex>
@@ -730,8 +735,8 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox22</rd:DefaultName>
-        <Top>4.31472in</Top>
-        <Left>3.39806in</Left>
+        <Top>4.10639in</Top>
+        <Left>3.74528in</Left>
         <Height>0.25in</Height>
         <Width>0.69444in</Width>
         <ZIndex>11</ZIndex>
@@ -760,10 +765,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox20</rd:DefaultName>
-        <Top>4.31472in</Top>
-        <Left>4.12028in</Left>
+        <Top>4.10639in</Top>
+        <Left>4.45361in</Left>
         <Height>0.25in</Height>
-        <Width>1.375in</Width>
+        <Width>1.04167in</Width>
         <ZIndex>12</ZIndex>
         <Style>
           <Border>
@@ -790,7 +795,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Textbox25</rd:DefaultName>
-        <Top>4.69667in</Top>
+        <Top>4.48834in</Top>
         <Left>3.88417in</Left>
         <Height>0.25in</Height>
         <Width>1.27778in</Width>
@@ -806,10 +811,10 @@
         </Style>
       </Textbox>
     </ReportItems>
-    <Height>5.59028in</Height>
+    <Height>4.9375in</Height>
     <Style />
   </Body>
-  <Width>6.21528in</Width>
+  <Width>5.94445in</Width>
   <Page>
     <LeftMargin>1in</LeftMargin>
     <RightMargin>1in</RightMargin>

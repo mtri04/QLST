@@ -202,4 +202,3 @@ D:\Source\QLST\GUI\GUI\bin\Debug\pt\Microsoft.ReportViewer.WinForms.resources.dl
 D:\Source\QLST\GUI\GUI\bin\Debug\ru\Microsoft.ReportViewer.WinForms.resources.dll
 D:\Source\QLST\GUI\GUI\bin\Debug\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll
 D:\Source\QLST\GUI\GUI\bin\Debug\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll
-D:\Source\QLST\GUI\GUI\obj\Debug\GUI._1.resources

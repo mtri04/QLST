@@ -113,11 +113,43 @@ namespace GUI
                 bt_sua.Enabled = true;
             }
         }
-        private void bt_doimatkhau_Click(object sender, EventArgs e)
+        //private void bt_doimatkhau_Click(object sender, EventArgs e)
+        //{
+        //    Doimatkhau formDoimatkhau = new Doimatkhau();
+        //    formDoimatkhau.ShowDialog();
+        //}
+        private bool IsValidMaNV(string maNV)
         {
-            Doimatkhau formDoimatkhau = new Doimatkhau();
-            formDoimatkhau.taikhoanForm = this;
-            formDoimatkhau.ShowDialog();
+            var isValid = taiKhoanService.CheckMaNVExist(maNV);
+            if (!isValid)
+            {
+                MessageBox.Show("Mã nhân viên không tồn tại trong CSDL.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return isValid;
+        }
+
+        private void txt_user_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back && e.KeyChar != ' ' && e.KeyChar != '-')
+            {
+                e.Handled = true;
+            }
+        }
+        private void txt_password_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back && e.KeyChar != ' ' && e.KeyChar != '-')
+            {
+                e.Handled = true;
+            }
+        }
+        private bool IsValidUser(string user)
+        {
+            var isExist = taiKhoanService.CheckUserExist(user);
+            if (isExist)
+            {
+                MessageBox.Show("Tên đăng nhập đã tồn tại. Vui lòng chọn tên khác.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            return !isExist;
         }
 
         private void bt_them_Click(object sender, EventArgs e)
@@ -127,6 +159,9 @@ namespace GUI
             string password = txt_password.Text.Trim();
             DateTime datecreate = datetimepacket_datecreate.Value.Date;
             bool isAdmin = cmb_chucvu.SelectedItem.ToString() == "Quản trị hệ thống";
+
+            if (!IsValidMaNV(maNV)) return;
+            if (!IsValidUser(user)) return;
 
             if (string.IsNullOrEmpty(maNV) || string.IsNullOrEmpty(user) || string.IsNullOrEmpty(password))
             {
@@ -150,7 +185,7 @@ namespace GUI
             }
             else
             {
-                MessageBox.Show("Thêm tài khoản thất bại.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Mã NV này đã có tài khoản.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
@@ -160,6 +195,9 @@ namespace GUI
             string user = txt_user.Text.Trim();
             string password = txt_password.Text.Trim();
             bool isAdmin = cmb_chucvu.SelectedItem.ToString() == "Quản trị hệ thống";
+
+            if (!IsValidMaNV(maNV)) return;
+            if (!IsValidUser(user)) return;
 
             if (string.IsNullOrEmpty(maNV) || string.IsNullOrEmpty(user) || string.IsNullOrEmpty(password))
             {
@@ -186,9 +224,13 @@ namespace GUI
             }
         }
 
+
+
         private void bt_xoa_Click(object sender, EventArgs e)
         {
             string maNV = txt_manv.Text.Trim();
+
+            if (!IsValidMaNV(maNV)) return;
 
             if (string.IsNullOrEmpty(maNV))
             {

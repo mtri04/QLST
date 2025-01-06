@@ -90,6 +90,7 @@
             this.txt_sdt.Name = "txt_sdt";
             this.txt_sdt.Size = new System.Drawing.Size(162, 33);
             this.txt_sdt.TabIndex = 126;
+            this.txt_sdt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_sdt_KeyPress);
             // 
             // bt_addanh
             // 
@@ -135,6 +136,7 @@
             this.txt_fullname.Name = "txt_fullname";
             this.txt_fullname.Size = new System.Drawing.Size(162, 31);
             this.txt_fullname.TabIndex = 51;
+            this.txt_fullname.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_fullname_KeyPress);
             // 
             // label2
             // 
@@ -171,6 +173,7 @@
             this.txt_email.Name = "txt_email";
             this.txt_email.Size = new System.Drawing.Size(162, 33);
             this.txt_email.TabIndex = 44;
+            this.txt_email.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_email_KeyPress);
             // 
             // label5
             // 

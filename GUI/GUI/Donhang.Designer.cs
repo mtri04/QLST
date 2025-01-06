@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Donhang));
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.bt_excel = new System.Windows.Forms.Button();
             this.bt_xuatchitiethd = new System.Windows.Forms.Button();
             this.bt_xuathoadon = new System.Windows.Forms.Button();
             this.bt_taodonhang = new System.Windows.Forms.Button();
@@ -61,7 +62,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.txt_madh = new System.Windows.Forms.TextBox();
             this.txt_tenkh = new System.Windows.Forms.TextBox();
-            this.bt_excel = new System.Windows.Forms.Button();
             this.groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_donhang)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -84,6 +84,21 @@
             this.groupBox3.TabIndex = 111;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Danh sách sản phẩm đã chọn";
+            // 
+            // bt_excel
+            // 
+            this.bt_excel.BackColor = System.Drawing.Color.LawnGreen;
+            this.bt_excel.ForeColor = System.Drawing.SystemColors.ControlText;
+            this.bt_excel.Image = global::GUI.Properties.Resources.Microsoft_Excel_2013_icon;
+            this.bt_excel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            this.bt_excel.Location = new System.Drawing.Point(921, 272);
+            this.bt_excel.Name = "bt_excel";
+            this.bt_excel.Size = new System.Drawing.Size(136, 61);
+            this.bt_excel.TabIndex = 126;
+            this.bt_excel.Text = "Excel";
+            this.bt_excel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            this.bt_excel.UseVisualStyleBackColor = false;
+            this.bt_excel.Click += new System.EventHandler(this.bt_excel_Click);
             // 
             // bt_xuatchitiethd
             // 
@@ -327,8 +342,8 @@
             // 
             // datetimepacket_datecreate
             // 
-            this.datetimepacket_datecreate.CustomFormat = "yyyy    -mm     -dd";
-            this.datetimepacket_datecreate.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.datetimepacket_datecreate.CustomFormat = "dd - MM - yyyy";
+            this.datetimepacket_datecreate.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.datetimepacket_datecreate.Location = new System.Drawing.Point(11, 246);
             this.datetimepacket_datecreate.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.datetimepacket_datecreate.Name = "datetimepacket_datecreate";
@@ -370,6 +385,7 @@
             this.txt_diachi.Name = "txt_diachi";
             this.txt_diachi.Size = new System.Drawing.Size(298, 31);
             this.txt_diachi.TabIndex = 51;
+            this.txt_diachi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_diachi_KeyPress);
             // 
             // label2
             // 
@@ -406,6 +422,7 @@
             this.txt_sdt.Name = "txt_sdt";
             this.txt_sdt.Size = new System.Drawing.Size(187, 33);
             this.txt_sdt.TabIndex = 44;
+            this.txt_sdt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_sdt_KeyPress);
             // 
             // label5
             // 
@@ -452,21 +469,7 @@
             this.txt_tenkh.Name = "txt_tenkh";
             this.txt_tenkh.Size = new System.Drawing.Size(166, 30);
             this.txt_tenkh.TabIndex = 37;
-            // 
-            // bt_excel
-            // 
-            this.bt_excel.BackColor = System.Drawing.Color.LawnGreen;
-            this.bt_excel.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.bt_excel.Image = global::GUI.Properties.Resources.Microsoft_Excel_2013_icon;
-            this.bt_excel.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.bt_excel.Location = new System.Drawing.Point(921, 272);
-            this.bt_excel.Name = "bt_excel";
-            this.bt_excel.Size = new System.Drawing.Size(136, 61);
-            this.bt_excel.TabIndex = 126;
-            this.bt_excel.Text = "Excel";
-            this.bt_excel.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            this.bt_excel.UseVisualStyleBackColor = false;
-            this.bt_excel.Click += new System.EventHandler(this.bt_excel_Click);
+            this.txt_tenkh.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_tenkh_KeyPress);
             // 
             // Donhang
             // 

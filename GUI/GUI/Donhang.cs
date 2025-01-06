@@ -20,6 +20,8 @@ namespace GUI
             LoadData();
             bt_xuatchitiethd.Visible = false;
             bt_xuathoadon.Visible = false;
+            cmb_masp_tensanpham_soluongton.SelectedIndex = -1;
+            cmb_manv.SelectedIndex = -1;
             setGirdViewStyle(dgv_donhang);
         }
         public void setGirdViewStyle(DataGridView dgv)
@@ -76,6 +78,27 @@ namespace GUI
             bt_xuatchitiethd.Visible = false;
             bt_xuathoadon.Visible = false;
         }
+        private void txt_tenkh_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;  
+            }
+        }
+        private void txt_sdt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;  
+            }
+        }
+        private void txt_diachi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && !char.IsWhiteSpace(e.KeyChar) && e.KeyChar != (char)Keys.Back && e.KeyChar != '-')
+            {
+                e.Handled = true;  
+            }
+        }
 
         private void bt_taodonhang_Click(object sender, EventArgs e)
         {
@@ -94,6 +117,7 @@ namespace GUI
                     MessageBox.Show("Vui lòng chọn nhân viên!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
+                string selectedManv = cmb_manv.SelectedValue.ToString();
 
                 if (dgv_donhang.Rows.Count == 0)
                 {
@@ -193,7 +217,6 @@ namespace GUI
  
             selectedProduct.SoLuongTon -= soLuongMua;
             product.solg -= soLuongMua;
-            LoadData();
             cmb_masp_tensanpham_soluongton.Refresh();
 
 
@@ -334,15 +357,14 @@ namespace GUI
         {
             try
             {
-                // Lấy giá trị từ các TextBox và ComboBox
-                string mahd = txt_madh.Text;  // Mã hóa đơn
-                string manv = cmb_manv.SelectedValue.ToString();  // Mã nhân viên
-                string tenkh = txt_tenkh.Text;  // Tên khách hàng
-                string sdt = txt_sdt.Text;  // Số điện thoại
-                string diachi = txt_diachi.Text;  // Địa chỉ
-                DateTime ngaymua = datetimepacket_datecreate.Value;  // Ngày mua
+                string mahd = txt_madh.Text;  
+                string manv = cmb_manv.SelectedValue.ToString();  
+                string tenkh = txt_tenkh.Text;  
+                string sdt = txt_sdt.Text;  
+                string diachi = txt_diachi.Text;  
+                DateTime ngaymua = datetimepacket_datecreate.Value;  
 
-                // Tạo DataTable để chứa dữ liệu
+
                 DataTable hoadonData = new DataTable();
                 hoadonData.Columns.Add("MaSP");
                 hoadonData.Columns.Add("TenSP");
@@ -350,7 +372,6 @@ namespace GUI
                 hoadonData.Columns.Add("Giaban");
                 hoadonData.Columns.Add("Thanhtien");
 
-                // Lấy danh sách sản phẩm từ DataGridView
                 foreach (DataGridViewRow row in dgv_donhang.Rows)
                 {
                     if (row.Cells["MaSP"].Value != null && row.Cells["SoLuongMua"].Value != null && row.Cells["Thanhtien"].Value != null)
@@ -365,42 +386,28 @@ namespace GUI
                     }
                 }
 
-                // Kiểm tra nếu không có sản phẩm để xuất hóa đơn
                 if (hoadonData.Rows.Count == 0)
                 {
                     MessageBox.Show("Đơn hàng chưa có sản phẩm để xuất hóa đơn!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
-                // Tạo đối tượng xuatdonhang và truyền dữ liệu
-                foreach (DataRow row in hoadonData.Rows)
-                {
-                    string maSP = row["MaSP"].ToString();
-                    string tenSP = row["TenSP"].ToString();
-                    int soLuong = Convert.ToInt32(row["SoLuongMua"]);
-                    decimal donGia = Convert.ToDecimal(row["Giaban"]);
-                    decimal thanhTien = Convert.ToDecimal(row["Thanhtien"]);
+                xuatdonhang phieuxuatForm = new xuatdonhang(
+                    mahd,        
+                    tenkh,        
+                    sdt,          
+                    diachi,      
+                    manv,         
+                    ngaymua,  
+                    null,         
+                    null,         
+                    null,         
+                    null,         
+                    null          
+                );
 
-                    // Chuyển đổi donGia thành int? để truyền vào constructor
-                    int? giaban = (int?)Math.Floor(donGia);  // Làm tròn xuống phần nguyên của decimal thành int?
-
-                    // Truyền tham số vào constructor của xuatdonhang
-                    xuatdonhang phieuxuatForm = new xuatdonhang(
-                        mahd,         // Mã hóa đơn (string)
-                        tenkh,        // Tên khách hàng
-                        sdt,          // Số điện thoại
-                        diachi,       // Địa chỉ
-                        manv,         // Mã nhân viên
-                        ngaymua,      // Ngày mua (DateTime)
-                        giaban,    // Giá bán (int?)
-                        soLuong,      // Số lượng (int?)
-                        maSP,         // Mã sản phẩm (string)
-                        tenSP,        // Tên sản phẩm (string)
-                        thanhTien     // Thành tiền (decimal?)
-                    );
-                    phieuxuatForm.LoadData(hoadonData);
-                    phieuxuatForm.ShowDialog();  // Hiển thị form hóa đơn
-                }
+                phieuxuatForm.LoadData(hoadonData);  
+                phieuxuatForm.ShowDialog();         
             }
             catch (Exception ex)
             {
@@ -410,7 +417,82 @@ namespace GUI
 
         private void bt_xuatchitiethd_Click(object sender, EventArgs e)
         {
+            try
+            {
+                string mahd = txt_madh.Text; 
+                string manv = cmb_manv.SelectedValue.ToString(); 
+                string tenkh = txt_tenkh.Text; 
+                string sdt = txt_sdt.Text; 
+                string diachi = txt_diachi.Text; 
+                DateTime ngaymua = datetimepacket_datecreate.Value; 
 
+
+                DataTable chitiethoadonData = new DataTable();
+                chitiethoadonData.Columns.Add("MaSP");
+                chitiethoadonData.Columns.Add("TenSP");
+                chitiethoadonData.Columns.Add("TenNCC");
+                chitiethoadonData.Columns.Add("GiaNhap");
+                chitiethoadonData.Columns.Add("GiaBan");
+                chitiethoadonData.Columns.Add("HSD");
+                chitiethoadonData.Columns.Add("NoiSX");
+                chitiethoadonData.Columns.Add("SoLuongMua");
+                chitiethoadonData.Columns.Add("Thanhtien");
+
+                foreach (DataGridViewRow row in dgv_donhang.Rows)
+                {
+                    if (row.Cells["MaSP"].Value != null && row.Cells["SoLuongMua"].Value != null && row.Cells["Thanhtien"].Value != null)
+                    {
+                        string masp = row.Cells["MaSP"].Value.ToString().Trim();
+
+                        var sanpham = db.sanphams.FirstOrDefault(sp => sp.masp == masp);
+
+                        if (sanpham != null)
+                        {
+                            DataRow newRow = chitiethoadonData.NewRow();
+                            newRow["MaSP"] = masp;
+                            newRow["TenSP"] = sanpham.tensp;
+                            newRow["TenNCC"] = sanpham.nhacungcap?.tenncc ?? "N/A";
+                            newRow["GiaNhap"] = sanpham.gianhap ?? 0;
+                            newRow["GiaBan"] = sanpham.giaban ?? 0;
+                            newRow["HSD"] = sanpham.hsd.HasValue? sanpham.hsd.Value.ToString("dd-MM-yyyy"): "N/A";
+                            newRow["NoiSX"] = sanpham.noisx ?? "N/A";
+                            newRow["SoLuongMua"] = row.Cells["Soluongmua"].Value.ToString();
+                            newRow["Thanhtien"] = row.Cells["Thanhtien"].Value ?? 0;
+
+                            chitiethoadonData.Rows.Add(newRow);
+                        }
+                    }
+                }
+
+                if (chitiethoadonData.Rows.Count == 0)
+                {
+                    MessageBox.Show("Không có chi tiết hóa đơn để xuất!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+                Chitietdonhang chitiethdForm = new Chitietdonhang(
+                    mahd,
+                    tenkh,
+                    sdt,
+                    diachi,
+                    manv,
+                    ngaymua,
+                    0,
+                    null,
+                    null,
+                    0,
+                    0,
+                    DateTime.MinValue,
+                    "N/A"
+                );
+
+                chitiethdForm.LoadData(chitiethoadonData);
+                chitiethdForm.ShowDialog();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Đã xảy ra lỗi: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void bt_excel_Click(object sender, EventArgs e)

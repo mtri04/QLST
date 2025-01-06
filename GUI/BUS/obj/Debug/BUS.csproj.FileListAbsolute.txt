@@ -13,3 +13,18 @@ C:\Users\Minh Tri\source\QLST_doan\GUI\BUS\obj\Debug\BUS.csproj.CoreCompileInput
 C:\Users\Minh Tri\source\QLST_doan\GUI\BUS\obj\Debug\BUS.csproj.Up2Date
 C:\Users\Minh Tri\source\QLST_doan\GUI\BUS\obj\Debug\BUS.dll
 C:\Users\Minh Tri\source\QLST_doan\GUI\BUS\obj\Debug\BUS.pdb
+D:\Source\QLST\GUI\BUS\bin\Debug\BUS.dll.config
+D:\Source\QLST\GUI\BUS\bin\Debug\BUS.dll
+D:\Source\QLST\GUI\BUS\bin\Debug\BUS.pdb
+D:\Source\QLST\GUI\BUS\bin\Debug\DAL.dll
+D:\Source\QLST\GUI\BUS\bin\Debug\EntityFramework.dll
+D:\Source\QLST\GUI\BUS\bin\Debug\EntityFramework.SqlServer.dll
+D:\Source\QLST\GUI\BUS\bin\Debug\DAL.pdb
+D:\Source\QLST\GUI\BUS\bin\Debug\DAL.dll.config
+D:\Source\QLST\GUI\BUS\bin\Debug\EntityFramework.xml
+D:\Source\QLST\GUI\BUS\bin\Debug\EntityFramework.SqlServer.xml
+D:\Source\QLST\GUI\BUS\obj\Debug\BUS.csproj.AssemblyReference.cache
+D:\Source\QLST\GUI\BUS\obj\Debug\BUS.csproj.CoreCompileInputs.cache
+D:\Source\QLST\GUI\BUS\obj\Debug\BUS.csproj.Up2Date
+D:\Source\QLST\GUI\BUS\obj\Debug\BUS.dll
+D:\Source\QLST\GUI\BUS\obj\Debug\BUS.pdb

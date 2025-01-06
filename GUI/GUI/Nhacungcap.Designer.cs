@@ -214,6 +214,7 @@
             this.txt_diachi.Name = "txt_diachi";
             this.txt_diachi.Size = new System.Drawing.Size(317, 31);
             this.txt_diachi.TabIndex = 51;
+            this.txt_diachi.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_diachi_KeyPress);
             // 
             // label2
             // 
@@ -237,6 +238,7 @@
             this.txt_email.Name = "txt_email";
             this.txt_email.Size = new System.Drawing.Size(241, 33);
             this.txt_email.TabIndex = 46;
+            this.txt_email.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_email_KeyPress);
             // 
             // label4
             // 
@@ -260,6 +262,7 @@
             this.txt_sdt.Name = "txt_sdt";
             this.txt_sdt.Size = new System.Drawing.Size(317, 33);
             this.txt_sdt.TabIndex = 44;
+            this.txt_sdt.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_sdt_KeyPress);
             // 
             // label5
             // 
@@ -307,6 +310,7 @@
             this.txt_tennhacungcap.Name = "txt_tennhacungcap";
             this.txt_tennhacungcap.Size = new System.Drawing.Size(317, 30);
             this.txt_tennhacungcap.TabIndex = 37;
+            this.txt_tennhacungcap.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txt_tennhacungcap_KeyPress);
             // 
             // dgv_nhacungcap
             // 

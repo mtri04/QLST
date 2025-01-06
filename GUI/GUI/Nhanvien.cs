@@ -75,6 +75,29 @@ namespace GUI
                 bt_sua.Enabled = true;
             }
         }
+        private void txt_fullname_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetter(e.KeyChar) && !char.IsControl(e.KeyChar) && e.KeyChar != ' ')
+            {
+                e.Handled = true;
+            }
+        }
+        private void txt_sdt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txt_email_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Kiểm tra nếu ký tự không phải là chữ cái, số, dấu @, dấu chấm, hoặc ký tự điều khiển
+            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != '@' && e.KeyChar != '.' && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; // Ngăn chặn việc nhập ký tự không hợp lệ
+            }
+        }
 
         private void bt_them_Click_1(object sender, EventArgs e)
         {

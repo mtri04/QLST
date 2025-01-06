@@ -91,6 +91,40 @@ namespace GUI
             }
         }
 
+        private void txt_tensp_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+            if (!Char.IsLetter(e.KeyChar) && !Char.IsControl(e.KeyChar) && !Char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true; 
+            }
+        }
+
+        private void txt_noisx_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+            if (!Char.IsLetter(e.KeyChar) && !Char.IsControl(e.KeyChar) && !Char.IsWhiteSpace(e.KeyChar))
+            {
+                e.Handled = true; 
+            }
+        }
+        private void txt_gianhap_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; 
+            }
+        }
+
+        private void txt_giaban_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            
+            if (!Char.IsDigit(e.KeyChar) && !Char.IsControl(e.KeyChar))
+            {
+                e.Handled = true; 
+            }
+        }
 
         private void bt_them_Click(object sender, EventArgs e)
         {
@@ -234,7 +268,6 @@ namespace GUI
                         }
                     }
 
-                    // Lưu ảnh mới với tên mới
                     product.avatar = SaveAvatar();
                 }
 

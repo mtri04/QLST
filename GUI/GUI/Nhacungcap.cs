@@ -54,6 +54,37 @@ namespace GUI
                 dgv_nhacungcap.Rows[index].Cells[5].Value = ncc.avatar;
             }
         }
+        private void txt_tennhacungcap_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back && e.KeyChar != ' ' && e.KeyChar != '-')
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txt_diachi_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back && e.KeyChar != ' ' && e.KeyChar != '-')
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void txt_sdt_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsDigit(e.KeyChar) && e.KeyChar != (char)Keys.Back)
+            {
+                e.Handled = true;
+            }
+        }
+        private void txt_email_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsLetterOrDigit(e.KeyChar) && e.KeyChar != '@' && e.KeyChar != '.' && !char.IsControl(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
         private void bt_them_Click(object sender, EventArgs e)
         {
             string tenNCC = txt_tennhacungcap.Text.Trim();
