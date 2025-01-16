@@ -389,7 +389,7 @@
             this.txt_search.Name = "txt_search";
             this.txt_search.Size = new System.Drawing.Size(488, 35);
             this.txt_search.TabIndex = 118;
-            this.txt_search.Click += new System.EventHandler(this.txt_search_TextChanged);
+            this.txt_search.TextChanged += new System.EventHandler(this.txt_search_TextChanged);
             // 
             // pictureBox3
             // 

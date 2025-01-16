@@ -124,6 +124,7 @@ namespace GUI
             {
                 MessageBox.Show("Thêm nhân viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadNhanvien();
+                avatarPath = string.Empty;
             }
             else
             {
@@ -223,6 +224,7 @@ namespace GUI
             bt_them.Enabled = true;
             bt_xoa.Enabled = false;
             bt_sua.Enabled = false;
+            avatarPath = string.Empty;
         }
 
         private void bt_xoa_Click_1(object sender, EventArgs e)
@@ -244,7 +246,7 @@ namespace GUI
                 }
                 else
                 {
-                    MessageBox.Show("Không tìm thấy nhân viên với mã nhân viên này.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Nhân viên này đã có tài khoản, vui lòng xóa tài khoản trước.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

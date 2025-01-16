@@ -111,6 +111,7 @@ namespace GUI
             {
                 MessageBox.Show("Thêm nhà cung cấp thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 LoadNhacungcap();
+                avatarPath = string.Empty;
             }
             else
             {
@@ -210,6 +211,7 @@ namespace GUI
             bt_them.Enabled = true;
             bt_xoa.Enabled = false;
             bt_sua.Enabled = false;
+            avatarPath = string.Empty;
         }
         private void dgv_nhacungcap_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -283,13 +285,13 @@ namespace GUI
         {
             SaveFileDialog saveFileDialog = new SaveFileDialog();
             saveFileDialog.Filter = "Excel Files (*.xlsx)|*.xlsx";
-            saveFileDialog.FileName = "DanhSachNhaCungCap.xlsx"; // Tên mặc định cho file
+            saveFileDialog.FileName = "Thông tin nhà cung cấp.xlsx";
 
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
                 try
                 {
-                    // Ánh xạ dữ liệu từ NhaCungCap sang các cột Excel
+
                     var columnMapping = new Dictionary<string, Func<nhacungcap, object>>
             {
                 { "Mã NCC", ncc => ncc.mancc },
@@ -300,15 +302,13 @@ namespace GUI
                 { "Avatar", ncc => Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Images", ncc.avatar) }
             };
 
-                    // Sử dụng lại phương thức ExportToExcel
                     Excel.ExportToExcel(listnhacungcaps, saveFileDialog.FileName, "Nhà Cung Cấp", columnMapping);
 
-                    // Thông báo xuất file thành công
                     MessageBox.Show("Xuất file Excel thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
                 catch (Exception ex)
                 {
-                    // Xử lý lỗi khi xuất Excel
+ 
                     MessageBox.Show($"Lỗi khi xuất file Excel: {ex.Message}", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }

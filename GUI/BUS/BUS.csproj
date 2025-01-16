@@ -51,7 +51,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseBUS.cs" />
     <Compile Include="chitiethoadonService.cs" />
     <Compile Include="hoadonService.cs" />
     <Compile Include="nhacungcapService.cs" />

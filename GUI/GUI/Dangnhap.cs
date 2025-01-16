@@ -24,7 +24,7 @@ namespace GUI
         {
             string username = txt_taikhoan.Text.Trim();
             string password = txt_matkhau.Text.Trim();
-
+            //Kiểm tra nếu tài khoản hoặc mật khẩu để trống
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
@@ -73,6 +73,7 @@ namespace GUI
         }
         private bool VerifyPassword(string inputPassword, string storedPassword)
         {
+            //So sánh mật khẩu người dùng với mật khẩu trong CSDl
             return inputPassword == storedPassword;
         }
 

@@ -3,7 +3,31 @@
   "WorkspaceRootPath": "D:\\Source\\QLST\\GUI\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{01492F5B-8EF5-4819-BD1C-56FFB60F1184}|GUI\\GUI.csproj|D:\\Source\\QLST\\GUI\\gui\\main2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{01492F5B-8EF5-4819-BD1C-56FFB60F1184}|GUI\\GUI.csproj|d:\\source\\qlst\\gui\\gui\\dangnhap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{01492F5B-8EF5-4819-BD1C-56FFB60F1184}|GUI\\GUI.csproj|solutionrelative:gui\\dangnhap.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{01492F5B-8EF5-4819-BD1C-56FFB60F1184}|GUI\\GUI.csproj|d:\\source\\qlst\\gui\\gui\\main2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{01492F5B-8EF5-4819-BD1C-56FFB60F1184}|GUI\\GUI.csproj|solutionrelative:gui\\main2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{01492F5B-8EF5-4819-BD1C-56FFB60F1184}|GUI\\GUI.csproj|d:\\source\\qlst\\gui\\gui\\quanlytaikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{01492F5B-8EF5-4819-BD1C-56FFB60F1184}|GUI\\GUI.csproj|solutionrelative:gui\\quanlytaikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{01492F5B-8EF5-4819-BD1C-56FFB60F1184}|GUI\\GUI.csproj|d:\\source\\qlst\\gui\\gui\\nhanvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{01492F5B-8EF5-4819-BD1C-56FFB60F1184}|GUI\\GUI.csproj|solutionrelative:gui\\nhanvien.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{01492F5B-8EF5-4819-BD1C-56FFB60F1184}|GUI\\GUI.csproj|d:\\source\\qlst\\gui\\gui\\quanlytaikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{01492F5B-8EF5-4819-BD1C-56FFB60F1184}|GUI\\GUI.csproj|solutionrelative:gui\\quanlytaikhoan.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{01492F5B-8EF5-4819-BD1C-56FFB60F1184}|GUI\\GUI.csproj|d:\\source\\qlst\\gui\\gui\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{01492F5B-8EF5-4819-BD1C-56FFB60F1184}|GUI\\GUI.csproj|solutionrelative:gui\\main.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{01492F5B-8EF5-4819-BD1C-56FFB60F1184}|GUI\\GUI.csproj|d:\\source\\qlst\\gui\\gui\\main2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{01492F5B-8EF5-4819-BD1C-56FFB60F1184}|GUI\\GUI.csproj|solutionrelative:gui\\main2.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -19,6 +43,82 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
+              "Title": "Dangnhap.cs",
+              "DocumentMoniker": "D:\\Source\\QLST\\GUI\\GUI\\Dangnhap.cs",
+              "RelativeDocumentMoniker": "GUI\\Dangnhap.cs",
+              "ToolTip": "D:\\Source\\QLST\\GUI\\GUI\\Dangnhap.cs",
+              "RelativeToolTip": "GUI\\Dangnhap.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-11T02:10:08.407Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Nhanvien.cs",
+              "DocumentMoniker": "D:\\Source\\QLST\\GUI\\GUI\\Nhanvien.cs",
+              "RelativeDocumentMoniker": "GUI\\Nhanvien.cs",
+              "ToolTip": "D:\\Source\\QLST\\GUI\\GUI\\Nhanvien.cs",
+              "RelativeToolTip": "GUI\\Nhanvien.cs",
+              "ViewState": "AgIAANMAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-11T01:52:18.062Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Quanlytaikhoan.cs",
+              "DocumentMoniker": "D:\\Source\\QLST\\GUI\\GUI\\Quanlytaikhoan.cs",
+              "RelativeDocumentMoniker": "GUI\\Quanlytaikhoan.cs",
+              "ToolTip": "D:\\Source\\QLST\\GUI\\GUI\\Quanlytaikhoan.cs",
+              "RelativeToolTip": "GUI\\Quanlytaikhoan.cs",
+              "ViewState": "AgIAALgAAAAAAAAAAAAgwMUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-11T01:51:14.902Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Quanlytaikhoan.cs [Design]",
+              "DocumentMoniker": "D:\\Source\\QLST\\GUI\\GUI\\Quanlytaikhoan.cs",
+              "RelativeDocumentMoniker": "GUI\\Quanlytaikhoan.cs",
+              "ToolTip": "D:\\Source\\QLST\\GUI\\GUI\\Quanlytaikhoan.cs [Design]",
+              "RelativeToolTip": "GUI\\Quanlytaikhoan.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-11T01:51:12.861Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "Main.cs [Design]",
+              "DocumentMoniker": "D:\\Source\\QLST\\GUI\\GUI\\Main.cs",
+              "RelativeDocumentMoniker": "GUI\\Main.cs",
+              "ToolTip": "D:\\Source\\QLST\\GUI\\GUI\\Main.cs [Design]",
+              "RelativeToolTip": "GUI\\Main.cs [Design]",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-11T01:45:28.267Z",
+              "EditorCaption": " [Design]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Main2.cs",
+              "DocumentMoniker": "D:\\Source\\QLST\\GUI\\GUI\\Main2.cs",
+              "RelativeDocumentMoniker": "GUI\\Main2.cs",
+              "ToolTip": "D:\\Source\\QLST\\GUI\\GUI\\Main2.cs",
+              "RelativeToolTip": "GUI\\Main2.cs",
+              "ViewState": "AgIAABkAAAAAAAAAAAAkwC4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-01-11T01:02:25.753Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
               "Title": "Main2.cs [Design]",
               "DocumentMoniker": "D:\\Source\\QLST\\GUI\\GUI\\Main2.cs",
               "RelativeDocumentMoniker": "GUI\\Main2.cs",

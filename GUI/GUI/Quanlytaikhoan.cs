@@ -196,9 +196,6 @@ namespace GUI
             string password = txt_password.Text.Trim();
             bool isAdmin = cmb_chucvu.SelectedItem.ToString() == "Quản trị hệ thống";
 
-            if (!IsValidMaNV(maNV)) return;
-            if (!IsValidUser(user)) return;
-
             if (string.IsNullOrEmpty(maNV) || string.IsNullOrEmpty(user) || string.IsNullOrEmpty(password))
             {
                 MessageBox.Show("Vui lòng nhập đầy đủ thông tin tài khoản.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
